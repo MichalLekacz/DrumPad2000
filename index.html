@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="./tailwind.config.js"></script>
+    <link rel="stylesheet" href="../styles/style.css">
+    <title>AKAJ Profeszynal - DrumPad2000</title>
+</head>
+
+<body class="bg-sky-950 flex flex-col gap-4 items-center justify-center h-screen">
+    <div
+        class="bg-slate-950 p-8 rounded-lg shadow-lg w-96 grid grid-cols-4 gap-4 text-base border-slate-800 border-4 drop-shadow-lg">
+        <div class="key  text-slate-300 rounded-lg border-none h-20 border-2 text-left col-span-2">
+            <span class="text-2xl">AKAJ</span><br>
+            <p>PROFESZYNAL</p>
+        </div>
+        <div class="key  text-slate-300 rounded-lg border-none h-20 border-2 text-right col-span-2">
+            <p>DrumPad2000</p>
+        </div>
+        <div data-key="81"
+            class="key bg-slate-900 text-slate-200 rounded-lg border-red-500 border-2 text-center px-2 py-2 hover:bg-slate-800 hover:cursor-pointer">
+            PAD1 Q
+        </div>
+        <div data-key="87"
+            class="key bg-slate-900 text-slate-200 rounded-lg border-red-500 border-2 text-center px-2 py-2 hover:bg-slate-800 hover:cursor-pointer">
+            PAD2 W
+        </div>
+        <div data-key="69"
+            class="key bg-slate-900 text-slate-200 rounded-lg border-red-500 border-2 text-center px-2 py-2 hover:bg-slate-800 hover:cursor-pointer">
+            PAD3 E
+        </div>
+        <div data-key="82"
+            class="key bg-slate-900 text-slate-200 rounded-lg border-red-500 border-2 text-center px-2 py-2 hover:bg-slate-800 hover:cursor-pointer">
+            PAD4 R
+        </div>
+        <div data-key="65"
+            class="key bg-slate-900 text-slate-200 rounded-lg border-red-500 border-2 text-center px-2 py-2 hover:bg-slate-800 hover:cursor-pointer">
+            PAD5 A
+        </div>
+        <div data-key="83"
+            class="key bg-slate-900 text-slate-200 rounded-lg border-red-500 border-2 text-center px-2 py-2 hover:bg-slate-800 hover:cursor-pointer">
+            PAD6 S
+        </div>
+        <div data-key="68"
+            class="key bg-slate-900 text-slate-200 rounded-lg border-red-500 border-2 text-center px-2 py-2 hover:bg-slate-800 hover:cursor-pointer">
+            PAD7 D
+        </div>
+        <div data-key="70"
+            class="key bg-slate-900 text-slate-200 rounded-lg border-red-500 border-2 text-center px-2 py-2 hover:bg-slate-800 hover:cursor-pointer">
+            PAD8 F
+        </div>
+        <div data-key="90"
+            class="key bg-slate-900 text-slate-200 rounded-lg border-red-500 border-2 text-center px-2 py-2 hover:bg-slate-800 hover:cursor-pointer">
+            PAD9 Z
+        </div>
+        <div data-key="88"
+            class="key bg-slate-900 text-slate-200 rounded-lg border-red-500 border-2 text-center px-2 py-2 hover:bg-slate-800 hover:cursor-pointer">
+            PAD10 X
+        </div>
+        <div data-key="67"
+            class="key bg-slate-900 text-slate-200 rounded-lg border-red-500 border-2 text-center px-2 py-2 hover:bg-slate-800 hover:cursor-pointer">
+            PAD11 C
+        </div>
+        <div data-key="86"
+            class="key bg-slate-900 text-slate-200 rounded-lg border-red-500 border-2 text-center px-2 py-2 hover:bg-slate-800 hover:cursor-pointer">
+            PAD12 V
+        </div>
+    </div>
+
+    <div class="w-96 text-center mt-8">
+        <span class="text-slate-400">
+            Guide:<br>
+            Q - Clap<br>
+            W - HiHat<br>
+            E - Kick<br>
+            R - OpenHat<br>
+            A - Boom<br>
+            S - Ride<br>
+            D - Snare<br>
+            F - Tom<br>
+            Z - Tink<br>
+            X - Tom2<br>
+            C - Tom3<br>
+        </span>
+    </div>
+
+    <audio data-key="81" src="sounds/clap.wav"></audio>
+    <audio data-key="87" src="sounds/hihat.wav"></audio>
+    <audio data-key="69" src="sounds/kick.wav"></audio>
+    <audio data-key="82" src="sounds/openhat.wav"></audio>
+    <audio data-key="65" src="sounds/boom.wav"></audio>
+    <audio data-key="83" src="sounds/ride.wav"></audio>
+    <audio data-key="68" src="sounds/snare.wav"></audio>
+    <audio data-key="70" src="sounds/tom.wav"></audio>
+    <audio data-key="90" src="sounds/tink.wav"></audio>
+    <audio data-key="88" src="sounds/bell.wav"></audio>
+    <audio data-key="67" src="sounds/tom1.wav"></audio>
+    <audio data-key="86" src="sounds/tom2.wav"></audio>
+
+    <script src="script.js"></script>
+
+</body>
+
+</html>
