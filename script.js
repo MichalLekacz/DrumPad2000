@@ -16,6 +16,9 @@ function playSound(key) {
       source.buffer = audioBuffer;
       source.connect(audioContext.destination);
       source.start(0);
+    })
+    .catch(error => {
+      console.error('Błąd podczas ładowania i odtwarzania dźwięku:', error);
     });
 
   key.classList.add('scale-110', 'border-blue-500');
@@ -46,3 +49,13 @@ keys.forEach(key => {
 });
 
 window.addEventListener('keydown', handleKeydown);
+
+// Dodaj obsługę kliknięć myszką na Safari
+window.addEventListener('click', () => {
+  // Inicjalizuj AudioContext po kliknięciu, jeśli jeszcze nie jest zainicjowany
+  if (audioContext.state === 'suspended') {
+    audioContext.resume().then(() => {
+      console.log('AudioContext zainicjowany po kliknięciu.');
+    });
+  }
+});
