@@ -1,13 +1,13 @@
 function removeTransition(e) {
   if (e.propertyName !== 'transform') return;
-  e.target.classList.remove('playing');
+  e.target.classList.remove('scale-110' , 'border-blue-500');
 }
 
 function playSound(key) {
   const audio = document.querySelector(`audio[data-key="${key.dataset.key}"]`);
   if (!audio) return;
 
-  key.classList.add('playing');
+  key.classList.add('scale-110', 'border-blue-500');
   audio.currentTime = 0;
   audio.play();
 }
