@@ -1,7 +1,9 @@
 let audioContext; // Inicjalizacja AudioContext
 
 function initAudioContext() {
-  audioContext = new (window.AudioContext || window.webkitAudioContext)();
+  audioContext = new (window.AudioContext || window.webkitAudioContext)({
+    sampleRate: 44100,
+  });
 }
 
 function playSound(key) {
