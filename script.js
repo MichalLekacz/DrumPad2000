@@ -1,18 +1,24 @@
-// Inicjalizacja AudioContext
-const audioContext = new (window.AudioContext || window.webkitAudioContext)();
+function removeTransition(e) {
+  if (e.propertyName !== 'transform') return;
+  e.target.classList.remove('scale-110', 'border-blue-500');
+}
 
-// Funkcja do odtwarzania dźwięku
+let audioContext; // Inicjalizacja AudioContext
+
+function initAudioContext() {
+  audioContext = new (window.AudioContext || window.webkitAudioContext)();
+}
+
 function playSound(key) {
   const audio = document.querySelector(`audio[data-key="${key.dataset.key}"]`);
   if (!audio) return;
-
-  const source = audioContext.createBufferSource();
 
   // Załaduj plik dźwiękowy
   fetch(audio.getAttribute('src'))
     .then(response => response.arrayBuffer())
     .then(data => audioContext.decodeAudioData(data))
     .then(audioBuffer => {
+      const source = audioContext.createBufferSource();
       source.buffer = audioBuffer;
       source.connect(audioContext.destination);
       source.start(0);
@@ -22,11 +28,6 @@ function playSound(key) {
     });
 
   key.classList.add('scale-110', 'border-blue-500');
-}
-
-function removeTransition(e) {
-  if (e.propertyName !== 'transform') return;
-  e.target.classList.remove('scale-110', 'border-blue-500');
 }
 
 function handleKeydown(e) {
@@ -48,14 +49,11 @@ keys.forEach(key => {
   key.addEventListener('click', handleClick);
 });
 
-window.addEventListener('keydown', handleKeydown);
-
-// Dodaj obsługę kliknięć myszką na Safari
+// Inicjalizacja AudioContext po kliknięciu, jeśli jeszcze nie jest zainicjowany
 window.addEventListener('click', () => {
-  // Inicjalizuj AudioContext po kliknięciu, jeśli jeszcze nie jest zainicjowany
-  if (audioContext.state === 'suspended') {
-    audioContext.resume().then(() => {
-      console.log('AudioContext zainicjowany po kliknięciu.');
-    });
+  if (!audioContext) {
+    initAudioContext();
   }
 });
+
+window.addEventListener('keydown', handleKeydown);
