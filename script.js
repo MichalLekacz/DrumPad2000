@@ -1,8 +1,3 @@
-function removeTransition(e) {
-  if (e.propertyName !== 'transform') return;
-  e.target.classList.remove('scale-110', 'border-blue-500');
-}
-
 let audioContext; // Inicjalizacja AudioContext
 
 function initAudioContext() {
@@ -10,6 +5,11 @@ function initAudioContext() {
 }
 
 function playSound(key) {
+  if (!audioContext) {
+    // Inicjalizuj AudioContext, jeśli jeszcze nie jest zainicjowany
+    initAudioContext();
+  }
+
   const audio = document.querySelector(`audio[data-key="${key.dataset.key}"]`);
   if (!audio) return;
 
@@ -28,6 +28,11 @@ function playSound(key) {
     });
 
   key.classList.add('scale-110', 'border-blue-500');
+}
+
+function removeTransition(e) {
+  if (e.propertyName !== 'transform') return;
+  e.target.classList.remove('scale-110', 'border-blue-500');
 }
 
 function handleKeydown(e) {
