@@ -31,22 +31,18 @@ function playSound(key) {
   );
   if (!audioElement) return;
 
-  key.classList.add("scale-110", "border-blue-500");
-
   loadAudioBuffer(audioElement)
     .then((audioBuffer) => {
       const source = audioContext.createBufferSource();
       source.buffer = audioBuffer;
       source.connect(audioContext.destination);
       source.start(0);
-
-      source.onended = () => {
-        key.classList.remove("scale-110", "border-blue-500");
-      };
     })
     .catch((error) => {
       console.error("Error loading and playing audio:", error);
     });
+
+  key.classList.add("scale-110", "border-blue-500");
 }
 
 const keys = Array.from(document.querySelectorAll(".key"));
@@ -54,6 +50,7 @@ keys.forEach((key) => {
   key.addEventListener("transitionend", removeTransition);
 
   key.addEventListener("click", () => playSound(key));
+  key.addEventListener("touchstart", () => playSound(key));
 });
 
 window.addEventListener("keydown", (e) => {
@@ -67,5 +64,34 @@ window.addEventListener("keydown", (e) => {
 
 function removeTransition(e) {
   if (e.propertyName !== "transform") return;
-  e.target.classList.remove("scale-110", "border-blue-500");
+  const key = e.target;
+  key.classList.remove("scale-110", "border-blue-500");
+  setTimeout(() => {
+    key.classList.remove("scale-110", "border-blue-500");
+  }, 70);
 }
+const activeTouches = new Set();
+
+function handleTouch(e) {
+  if (e.target.classList.contains("key")) {
+    const key = e.target;
+    if (!activeTouches.has(key)) {
+      activeTouches.add(key);
+      playSound(key);
+    }
+  }
+}
+
+function handleTouchEnd(e) {
+  if (e.target.classList.contains("key")) {
+    const key = e.target;
+    activeTouches.delete(key);
+  }
+}
+
+keys.forEach((key) => {
+  key.addEventListener("transitionend", removeTransition);
+  key.addEventListener("click", handleClick);
+  key.addEventListener("touchstart", handleTouch);
+  key.addEventListener("touchend", handleTouchEnd);
+});
