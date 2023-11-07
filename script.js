@@ -49,8 +49,14 @@ const keys = Array.from(document.querySelectorAll(".key"));
 keys.forEach((key) => {
   key.addEventListener("transitionend", removeTransition);
 
+  // Add click event handling for desktop
   key.addEventListener("click", () => playSound(key));
-  key.addEventListener("touchstart", () => playSound(key));
+
+  // Add touchstart event handling for mobile
+  key.addEventListener("touchstart", (event) => {
+    event.preventDefault(); // Prevent double playback on mobile
+    playSound(key);
+  });
 });
 
 window.addEventListener("keydown", (e) => {
