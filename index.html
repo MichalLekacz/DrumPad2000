@@ -1,118 +1,204 @@
 <!DOCTYPE html>
 <html lang="en">
-
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <script src="https://cdn.tailwindcss.com"></script>
     <script src="./tailwind.config.js"></script>
     <title>AKAJ Profeszynal - DrumPad2000</title>
-</head>
+  </head>
 
-<body class="bg-sky-950 flex flex-col gap-4 items-center justify-center h-screen">
+  <body
+    class="bg-sky-950 flex flex-col gap-4 items-center justify-center h-screen"
+  >
     <div
-        class="bg-slate-950 p-8 rounded-lg shadow-lg w-96 grid grid-cols-4 gap-4 text-base border-slate-800 border-4 drop-shadow-lg mt-48">
-        <div class="key  text-slate-300 rounded-lg border-none h-20 border-2 text-left col-span-2">
-            <span class="text-2xl">AKAJ</span><br>
-            <p>PROFESZYNAL</p>
-        </div>
-        <div class=" text-slate-300 rounded-lg border-none h-20 border-2 text-right col-span-2">
-            <p>DrumPad2000</p>
-        </div>
-        <div data-key="81"
-            class="key transition-all duration-75 bg-slate-900 text-slate-200 rounded-lg border-red-500 border-2 text-center px-2 py-2 hover:bg-slate-800 hover:cursor-pointer select-none">
-            PAD1 Q
-        </div>
-        <div data-key="87"
-            class="key transition-all duration-75 bg-slate-900 text-slate-200 rounded-lg border-red-500 border-2 text-center px-2 py-2 hover:bg-slate-800 hover:cursor-pointer select-none">
-            PAD2 W
-        </div>
-        <div data-key="69"
-            class="key transition-all duration-75 bg-slate-900 text-slate-200 rounded-lg border-red-500 border-2 text-center px-2 py-2 hover:bg-slate-800 hover:cursor-pointer select-none">
-            PAD3 E
-        </div>
-        <div data-key="82"
-            class="key transition-all duration-75 bg-slate-900 text-slate-200 rounded-lg border-red-500 border-2 text-center px-2 py-2 hover:bg-slate-800 hover:cursor-pointer select-none">
-            PAD4 R
-        </div>
-        <div data-key="65"
-            class="key transition-all duration-75 bg-slate-900 text-slate-200 rounded-lg border-red-500 border-2 text-center px-2 py-2 hover:bg-slate-800 hover:cursor-pointer select-none">
-            PAD5 A
-        </div>
-        <div data-key="83"
-            class="key transition-all duration-75 bg-slate-900 text-slate-200 rounded-lg border-red-500 border-2 text-center px-2 py-2 hover:bg-slate-800 hover:cursor-pointer select-none">
-            PAD6 S
-        </div>
-        <div data-key="68"
-            class="key transition-all duration-75 bg-slate-900 text-slate-200 rounded-lg border-red-500 border-2 text-center px-2 py-2 hover:bg-slate-800 hover:cursor-pointer select-none">
-            PAD7 D
-        </div>
-        <div data-key="70"
-            class="key transition-all duration-75 bg-slate-900 text-slate-200 rounded-lg border-red-500 border-2 text-center px-2 py-2 hover:bg-slate-800 hover:cursor-pointer select-none">
-            PAD8 F
-        </div>
-        <div data-key="90"
-            class="key transition-all duration-75 bg-slate-900 text-slate-200 rounded-lg border-red-500 border-2 text-center px-2 py-2 hover:bg-slate-800 hover:cursor-pointer select-none">
-            PAD9 Z
-        </div>
-        <div data-key="88"
-            class="key transition-all duration-75 bg-slate-900 text-slate-200 rounded-lg border-red-500 border-2 text-center px-2 py-2 hover:bg-slate-800 hover:cursor-pointer select-none">
-            PAD10 X
-        </div>
-        <div data-key="67"
-            class="key transition-all duration-75 bg-slate-900 text-slate-200 rounded-lg border-red-500 border-2 text-center px-2 py-2 hover:bg-slate-800 hover:cursor-pointer select-none">
-            PAD11 C
-        </div>
-        <div data-key="86"
-            class="key transition-all duration-75 bg-slate-900 text-slate-200 rounded-lg border-red-500 border-2 text-center px-2 py-2 hover:bg-slate-800 hover:cursor-pointer select-none">
-            PAD12 V
-        </div>
+      class="bg-slate-950 p-6 rounded-lg shadow-lg w-96 grid grid-cols-4 gap-4 text-base border-slate-800 border-4 drop-shadow-lg mt-48"
+    >
+      <div
+        class="key text-slate-300 rounded-lg border-none h-20 border-2 text-left col-span-2"
+      >
+        <span class="text-2xl">AKAJ</span><br />
+        <p>PROFESZYNAL</p>
+      </div>
+      <div
+        class="text-slate-300 rounded-lg border-none h-20 border-2 text-right col-span-2"
+      >
+        <p>DrumPad2000</p>
+      </div>
+      <div
+        data-key="81"
+        class="key transition-all duration-75 bg-slate-900 text-slate-200 rounded-lg border-red-500 border-2 text-center px-2 py-2 hover:bg-slate-800 hover:cursor-pointer select-none"
+      >
+        <span class="text-xs text-amber-400">Clap</span><br />
+        <span class="text-md">Q</span><br />
+      </div>
+      <div
+        data-key="87"
+        class="key transition-all duration-75 bg-slate-900 text-slate-200 rounded-lg border-red-500 border-2 text-center px-2 py-2 hover:bg-slate-800 hover:cursor-pointer select-none"
+      >
+        <span class="text-xs text-amber-400">Hat</span><br />
+        <span class="text-md">W</span><br />
+      </div>
+      <div
+        data-key="69"
+        class="key transition-all duration-75 bg-slate-900 text-slate-200 rounded-lg border-red-500 border-2 text-center px-2 py-2 hover:bg-slate-800 hover:cursor-pointer select-none"
+      >
+        <span class="text-xs text-amber-400">Kick</span><br />
+        <span class="text-md">E</span><br />
+      </div>
+      <div
+        data-key="82"
+        class="key transition-all duration-75 bg-slate-900 text-slate-200 rounded-lg border-red-500 border-2 text-center px-2 py-2 hover:bg-slate-800 hover:cursor-pointer select-none"
+      >
+        <span class="text-xs text-amber-400">OpenHat</span><br />
+        <span class="text-md">R</span><br />
+      </div>
+      <div
+        data-key="65"
+        class="key transition-all duration-75 bg-slate-900 text-slate-200 rounded-lg border-red-500 border-2 text-center px-2 py-2 hover:bg-slate-800 hover:cursor-pointer select-none"
+      >
+        <span class="text-xs text-amber-400">Boom</span><br />
+        <span class="text-md">A</span><br />
+      </div>
+      <div
+        data-key="83"
+        class="key transition-all duration-75 bg-slate-900 text-slate-200 rounded-lg border-red-500 border-2 text-center px-2 py-2 hover:bg-slate-800 hover:cursor-pointer select-none"
+      >
+        <span class="text-xs text-amber-400">Ride</span><br />
+        <span class="text-md">S</span><br />
+      </div>
+      <div
+        data-key="68"
+        class="key transition-all duration-75 bg-slate-900 text-slate-200 rounded-lg border-red-500 border-2 text-center px-2 py-2 hover:bg-slate-800 hover:cursor-pointer select-none"
+      >
+        <span class="text-xs text-amber-400">Snare</span><br />
+        <span class="text-md">D</span><br />
+      </div>
+      <div
+        data-key="70"
+        class="key transition-all duration-75 bg-slate-900 text-slate-200 rounded-lg border-red-500 border-2 text-center px-2 py-2 hover:bg-slate-800 hover:cursor-pointer select-none"
+      >
+        <span class="text-xs text-amber-400">Tom</span><br />
+        <span class="text-md">F</span><br />
+      </div>
+      <div
+        data-key="90"
+        class="key transition-all duration-75 bg-slate-900 text-slate-200 rounded-lg border-red-500 border-2 text-center px-2 py-2 hover:bg-slate-800 hover:cursor-pointer select-none"
+      >
+        <span class="text-xs text-amber-400">Tink</span><br />
+        <span class="text-md">Z</span><br />
+      </div>
+      <div
+        data-key="88"
+        class="key transition-all duration-75 bg-slate-900 text-slate-200 rounded-lg border-red-500 border-2 text-center px-2 py-2 hover:bg-slate-800 hover:cursor-pointer select-none"
+      >
+        <span class="text-xs text-amber-400">Bell</span><br />
+        <span class="text-md">X</span><br />
+      </div>
+      <div
+        data-key="67"
+        class="key transition-all duration-75 bg-slate-900 text-slate-200 rounded-lg border-red-500 border-2 text-center px-2 py-2 hover:bg-slate-800 hover:cursor-pointer select-none"
+      >
+        <span class="text-xs text-amber-400">Tom2</span><br />
+        <span class="text-md">C</span><br />
+      </div>
+      <div
+        data-key="86"
+        class="key transition-all duration-75 bg-slate-900 text-slate-200 rounded-lg border-red-500 border-2 text-center px-2 py-2 hover:bg-slate-800 hover:cursor-pointer select-none"
+      >
+        <span class="text-xs text-amber-400">Tom3</span><br />
+        <span class="text-md">V</span><br />
+      </div>
     </div>
 
-    <div class="w-96 text-center mt-8">
-        <span class="text-slate-400">
-            Guide:<br>
-            Q - Clap<br>
-            W - HiHat<br>
-            E - Kick<br>
-            R - OpenHat<br>
-            A - Boom<br>
-            S - Ride<br>
-            D - Snare<br>
-            F - Tom<br>
-            Z - Tink<br>
-            X - Tom2<br>
-            C - Tom3<br>
-        </span>
-    </div>
-
-    <audio data-key="81" src="sounds/clap.m4a" preload="auto" type="audio/x-m4a"></audio>
-    <audio data-key="87" src="sounds/hihat.wav" preload="auto" type="audio/wav"></audio>
-    <audio data-key="69" src="sounds/kick.wav" preload="auto" type="audio/wav"></audio>
-    <audio data-key="82" src="sounds/openhat.wav" preload="auto" type="audio/wav"></audio>
-    <audio data-key="65" src="sounds/boom.wav" preload="auto" type="audio/wav"></audio>
-    <audio data-key="83" src="sounds/ride.wav" preload="auto" type="audio/wav"></audio>
-    <audio data-key="68" src="sounds/snare.wav" preload="auto" type="audio/wav"></audio>
-    <audio data-key="70" src="sounds/tom.wav" preload="auto" type="audio/wav"></audio>
-    <audio data-key="90" src="sounds/tink.wav" preload="auto" type="audio/wav"></audio>
-    <audio data-key="88" src="sounds/bell.wav" preload="auto" type="audio/wav"></audio>
-    <audio data-key="67" src="sounds/tom1.wav" preload="auto" type="audio/wav"></audio>
-    <audio data-key="86" src="sounds/tom2.wav" preload="auto" type="audio/wav"></audio>
+    <audio
+      data-key="81"
+      src="sounds/clap.m4a"
+      preload="auto"
+      type="audio/x-m4a"
+    ></audio>
+    <audio
+      data-key="87"
+      src="sounds/hihat.wav"
+      preload="auto"
+      type="audio/wav"
+    ></audio>
+    <audio
+      data-key="69"
+      src="sounds/kick.wav"
+      preload="auto"
+      type="audio/wav"
+    ></audio>
+    <audio
+      data-key="82"
+      src="sounds/openhat.wav"
+      preload="auto"
+      type="audio/wav"
+    ></audio>
+    <audio
+      data-key="65"
+      src="sounds/boom.wav"
+      preload="auto"
+      type="audio/wav"
+    ></audio>
+    <audio
+      data-key="83"
+      src="sounds/ride.wav"
+      preload="auto"
+      type="audio/wav"
+    ></audio>
+    <audio
+      data-key="68"
+      src="sounds/snare.wav"
+      preload="auto"
+      type="audio/wav"
+    ></audio>
+    <audio
+      data-key="70"
+      src="sounds/tom.wav"
+      preload="auto"
+      type="audio/wav"
+    ></audio>
+    <audio
+      data-key="90"
+      src="sounds/tink.wav"
+      preload="auto"
+      type="audio/wav"
+    ></audio>
+    <audio
+      data-key="88"
+      src="sounds/bell.wav"
+      preload="auto"
+      type="audio/wav"
+    ></audio>
+    <audio
+      data-key="67"
+      src="sounds/tom1.wav"
+      preload="auto"
+      type="audio/wav"
+    ></audio>
+    <audio
+      data-key="86"
+      src="sounds/tom2.wav"
+      preload="auto"
+      type="audio/wav"
+    ></audio>
 
     <script src="script.js"></script>
 
-    <footer class="bg-slate-950 text-slate-400 p-4 mt-8 rounded-lg shadow-lg border-slate-800 border-4">
-        <div class="container mx-auto">
-            <div class="flex flex-col md:flex-row items-center justify-between">
-                <div class="mb-2 md:mb-0">
-                    &copy; 2023
-                </div>
-                <div class="space-x-4">
-                    <a href="https://www.michallekacz.dev/" class="hover:text-slate-200">&nbsp;michallekacz.dev</a>
-                </div>
-            </div>
+    <footer
+      class="bg-slate-950 text-slate-400 p-4 mt-8 rounded-lg shadow-lg border-slate-800 border-4"
+    >
+      <div class="container mx-auto">
+        <div class="flex flex-col md:flex-row items-center justify-between">
+          <div class="mb-2 md:mb-0">&copy; 2023</div>
+          <div class="space-x-4">
+            <a href="https://www.michallekacz.dev/" class="hover:text-slate-200"
+              >&nbsp;michallekacz.dev</a
+            >
+          </div>
         </div>
+      </div>
     </footer>
-</body>
-
+  </body>
 </html>

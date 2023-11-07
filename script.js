@@ -14,25 +14,29 @@ function playSound(key) {
   if (!audio) return;
 
   // Załaduj plik dźwiękowy
-  fetch(audio.getAttribute('src'))
-    .then(response => response.arrayBuffer())
-    .then(data => audioContext.decodeAudioData(data))
-    .then(audioBuffer => {
+  fetch(audio.getAttribute("src"))
+    .then((response) => response.arrayBuffer())
+    .then((data) => audioContext.decodeAudioData(data))
+    .then((audioBuffer) => {
       const source = audioContext.createBufferSource();
       source.buffer = audioBuffer;
       source.connect(audioContext.destination);
       source.start(0);
     })
-    .catch(error => {
-      console.error('Błąd podczas ładowania i odtwarzania dźwięku:', error);
+    .catch((error) => {
+      console.error("Błąd podczas ładowania i odtwarzania dźwięku:", error);
     });
 
-  key.classList.add('scale-110', 'border-blue-500');
+  key.classList.add("scale-110", "border-blue-500");
 }
 
 function removeTransition(e) {
-  if (e.propertyName !== 'transform') return;
-  e.target.classList.remove('scale-110', 'border-blue-500');
+  if (e.propertyName !== "transform") return;
+  const key = e.target;
+  key.classList.remove("scale-110", "border-blue-500");
+  setTimeout(() => {
+    key.classList.remove("scale-110", "border-blue-500");
+  }, 70); // Adjust the delay as needed
 }
 
 function handleKeydown(e) {
@@ -43,22 +47,40 @@ function handleKeydown(e) {
 }
 
 function handleClick(e) {
-  if (e.target.classList.contains('key')) {
+  if (e.target.classList.contains("key")) {
     playSound(e.target);
   }
 }
 
-const keys = Array.from(document.querySelectorAll('.key'));
-keys.forEach(key => {
-  key.addEventListener('transitionend', removeTransition);
-  key.addEventListener('click', handleClick);
+const keys = Array.from(document.querySelectorAll(".key"));
+keys.forEach((key) => {
+  key.addEventListener("transitionend", removeTransition);
+  key.addEventListener("click", handleClick);
 });
 
-// Inicjalizacja AudioContext po kliknięciu, jeśli jeszcze nie jest zainicjowany
-window.addEventListener('click', () => {
+function handleTouch(e) {
+  if (e.target.classList.contains("key")) {
+    playSound(e.target);
+  }
+}
+
+keys.forEach((key) => {
+  key.addEventListener("transitionend", removeTransition);
+  key.addEventListener("click", handleClick);
+  key.addEventListener("touchstart", handleTouch); // Dodaj touch eventLlistener
+});
+
+window.addEventListener("touchstart", () => {
   if (!audioContext) {
     initAudioContext();
   }
 });
 
-window.addEventListener('keydown', handleKeydown);
+// Inicjalizacja AudioContext po kliknięciu, jeśli jeszcze nie jest zainicjowany
+window.addEventListener("click", () => {
+  if (!audioContext) {
+    initAudioContext();
+  }
+});
+
+window.addEventListener("keydown", handleKeydown);
