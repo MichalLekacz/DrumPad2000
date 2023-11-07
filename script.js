@@ -1,40 +1,52 @@
-let audioContexts = new Set(); // Maintain a set of AudioContexts
+let audioContext; // Initialize the AudioContext
+const audioElements = {};
 
 function initAudioContext() {
-  const audioContext = new (window.AudioContext || window.webkitAudioContext)();
-  audioContexts.add(audioContext); // Store the context for later cleanup
-  return audioContext;
+  audioContext = new (window.AudioContext || window.webkitAudioContext)();
 }
 
-function loadAudioBuffer(audioElement, audioContext) {
-  return fetch(audioElement.getAttribute("src"))
-    .then((response) => response.arrayBuffer())
-    .then((data) => audioContext.decodeAudioData(data));
+function loadAudioBuffer(audioElement) {
+  const key = audioElement.dataset.key;
+
+  if (!audioElements[key]) {
+    return fetch(audioElement.getAttribute("src"))
+      .then((response) => response.arrayBuffer())
+      .then((data) => audioContext.decodeAudioData(data))
+      .then((audioBuffer) => {
+        audioElements[key] = audioBuffer;
+        return audioBuffer;
+      });
+  } else {
+    return Promise.resolve(audioElements[key]);
+  }
 }
 
 function playSound(key) {
+  if (!audioContext) {
+    initAudioContext();
+  }
+
   const audioElement = document.querySelector(
     `audio[data-key="${key.dataset.key}"]`
   );
   if (!audioElement) return;
 
-  const audioContext = initAudioContext();
+  key.classList.add("scale-110", "border-blue-500");
 
-  loadAudioBuffer(audioElement, audioContext)
+  loadAudioBuffer(audioElement)
     .then((audioBuffer) => {
       const source = audioContext.createBufferSource();
       source.buffer = audioBuffer;
       source.connect(audioContext.destination);
       source.start(0);
+
+      source.onended = () => {
+        key.classList.remove("scale-110", "border-blue-500");
+      };
     })
     .catch((error) => {
       console.error("Error loading and playing audio:", error);
     });
-
-  key.classList.add("scale-110", "border-blue-500");
-  setTimeout(() => {
-    key.classList.remove("scale-110", "border-blue-500");
-  }, 70); // Adjust the delay as needed
 }
 
 // Event listeners
@@ -55,8 +67,3 @@ function removeTransition(e) {
   if (e.propertyName !== "transform") return;
   e.target.classList.remove("scale-110", "border-blue-500");
 }
-
-// Clean up AudioContexts
-window.addEventListener("beforeunload", () => {
-  audioContexts.forEach((audioContext) => audioContext.close());
-});
