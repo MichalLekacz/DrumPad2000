@@ -20,3 +20,12 @@ You can try the [Drum Machine App here](https://michallekacz.github.io/DrumPad20
 2. Click on the drum pads to trigger sounds.
 3. You can also use the keyboard keys corresponding to each drum pad.
 4. Enjoy creating beats and experimenting with different sounds!
+
+## Installation
+
+If you want to run this project locally, follow these steps:
+
+1. Clone the repository:
+
+   ```bash
+   git clone https://github.com/your-username/drum-machine-app.git
