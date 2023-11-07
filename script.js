@@ -1,27 +1,26 @@
-let audioContext; // Initialize the AudioContext
-let audioBuffer = null; // Store the audio buffer for quick playback
+let audioContexts = new Set(); // Maintain a set of AudioContexts
 
 function initAudioContext() {
-  audioContext = new (window.AudioContext || window.webkitAudioContext)();
+  const audioContext = new (window.AudioContext || window.webkitAudioContext)();
+  audioContexts.add(audioContext); // Store the context for later cleanup
+  return audioContext;
 }
 
-function loadAudioBuffer(audioElement) {
+function loadAudioBuffer(audioElement, audioContext) {
   return fetch(audioElement.getAttribute("src"))
     .then((response) => response.arrayBuffer())
     .then((data) => audioContext.decodeAudioData(data));
 }
 
 function playSound(key) {
-  if (!audioContext) {
-    initAudioContext();
-  }
-
   const audioElement = document.querySelector(
     `audio[data-key="${key.dataset.key}"]`
   );
   if (!audioElement) return;
 
-  loadAudioBuffer(audioElement)
+  const audioContext = initAudioContext();
+
+  loadAudioBuffer(audioElement, audioContext)
     .then((audioBuffer) => {
       const source = audioContext.createBufferSource();
       source.buffer = audioBuffer;
@@ -56,3 +55,8 @@ function removeTransition(e) {
   if (e.propertyName !== "transform") return;
   e.target.classList.remove("scale-110", "border-blue-500");
 }
+
+// Clean up AudioContexts
+window.addEventListener("beforeunload", () => {
+  audioContexts.forEach((audioContext) => audioContext.close());
+});
