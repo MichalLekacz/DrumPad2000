@@ -58,16 +58,30 @@ keys.forEach((key) => {
   key.addEventListener("click", handleClick);
 });
 
+const activeTouches = new Set(); // To keep track of active touches
+
 function handleTouch(e) {
   if (e.target.classList.contains("key")) {
-    playSound(e.target);
+    const key = e.target;
+    if (!activeTouches.has(key)) {
+      activeTouches.add(key);
+      playSound(key);
+    }
+  }
+}
+
+function handleTouchEnd(e) {
+  if (e.target.classList.contains("key")) {
+    const key = e.target;
+    activeTouches.delete(key);
   }
 }
 
 keys.forEach((key) => {
   key.addEventListener("transitionend", removeTransition);
   key.addEventListener("click", handleClick);
-  key.addEventListener("touchstart", handleTouch); // Dodaj touch eventLlistener
+  key.addEventListener("touchstart", handleTouch);
+  key.addEventListener("touchend", handleTouchEnd);
 });
 
 window.addEventListener("touchstart", () => {
