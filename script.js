@@ -1,4 +1,4 @@
-let audioContext; // Initialize the AudioContext
+let audioContext;
 const audioElements = {};
 
 function initAudioContext() {
@@ -49,17 +49,19 @@ function playSound(key) {
     });
 }
 
-// Event listeners
 const keys = Array.from(document.querySelectorAll(".key"));
 keys.forEach((key) => {
   key.addEventListener("transitionend", removeTransition);
+
   key.addEventListener("click", () => playSound(key));
 });
 
 window.addEventListener("keydown", (e) => {
-  const key = document.querySelector(`div[data-key="${e.keyCode}"]`);
-  if (key) {
-    playSound(key);
+  const pressedKey = keys.find(
+    (key) => key.dataset.key === e.keyCode.toString()
+  );
+  if (pressedKey) {
+    playSound(pressedKey);
   }
 });
 
